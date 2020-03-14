@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap
+        {
+            width:800px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .item
+        {
+            width: 100%;
+            margin: 500px 0;
+            display: flex;
+            position: relative;
+        }
+        .text1
+        {
+            position: absolute;
+            top: -137px;
+            left: -80px;
+        }
+        .wrap>.item:nth-child(even)>.text1
+        {
+            left: 580px;
+        }
+        .text2
+        {
+            position: absolute;
+            left: 0;
+            top: 400px;
+        }
+        .wrap>.item:nth-child(even)>.text2
+        {
+            left: 250px;
+        }
+        .backgroundbox
+        {
+            width: 440px;
+            height: 300px;
+            background-color: #eee;
+            position: absolute;
+            right: -80px;
+            top: -100px;
+        }
+        .wrap>.item:nth-child(even)>.backgroundbox
+        {
+            top: -75px;
+            right: 100px;
+        }
+        .mainpic
+        {
+            position: absolute;
+            right: 0;
+        }
+        .wrap > .item:nth-child(even)>.mainpic
+        {
+            left: 0;
+        }
+        .playpic
+        {
+            position: absolute;
+            right: -10px;
+            top: 210px;
+        }
+        .wrap>.item:nth-child(even)>.playpic
+        {
+            left: -10px;
+        }
+        .footer
+        {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item">
+            <div class="backgroundbox"></div>
+            <img class="mainpic" src="Toyotapic/mainpic-1.jpg" alt="按鈕圖片">
+            <img class="text1" src="Toyotapic/text1-1.jpg" alt="文字框1">
+            <img class="text2" src="Toyotapic/text2-1.jpg" alt="文字框2">
+            <img class="playpic" src="Toyotapic/play.jpg" alt="">
+        </div>
+        <div class="item">
+            <div class="backgroundbox"></div>
+            <img class="mainpic" src="Toyotapic/mainpic-2.jpg" alt="按鈕圖片">
+            <img class="text1" src="Toyotapic/text1-2.jpg" alt="文字框1">
+            <img class="text2" src="Toyotapic/text2-2.jpg" alt="文字框2">
+            <img class="playpic" src="Toyotapic/play.jpg" alt="">
+        </div>
+        <div class="item">
+            <div class="backgroundbox"></div>
+            <img class="mainpic" src="Toyotapic/mainpic-3.jpg" alt="按鈕圖片">
+            <img class="text1" src="Toyotapic/text1-3.jpg" alt="文字框1">
+            <img class="text2" src="Toyotapic/text2-3.jpg" alt="文字框2">
+            <img class="playpic" src="Toyotapic/play.jpg" alt="">
+        </div>
+        <div class="item">
+            <div class="backgroundbox"></div>
+            <img class="mainpic" src="Toyotapic/mainpic-4.jpg" alt="按鈕圖片">
+            <img class="text1" src="Toyotapic/text1-4.jpg" alt="文字框1">
+            <img class="text2" src="Toyotapic/text2-4.jpg" alt="文字框2">
+            <img class="playpic" src="Toyotapic/play.jpg" alt="">
+        </div>
+        <div class="item">
+            <div class="backgroundbox"></div>
+            <img class="mainpic" src="Toyotapic/mainpic-5.jpg" alt="按鈕圖片">
+            <img class="text1" src="Toyotapic/text1-5.jpg" alt="文字框1">
+            <img class="text2" src="Toyotapic/text2-5.jpg" alt="文字框2">
+            <img class="playpic" src="Toyotapic/play.jpg" alt="">
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="footer"></div>
+</footer>
+</html>
