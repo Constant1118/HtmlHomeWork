@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManufaxWebPractice</title>
+    <script src="https://kit.fontawesome.com/9a93cb04a1.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: "Roboto", sans-serif;
+        }
+        .warp{
+            width: 100%;
+        }
+        .AddressAndPhones{
+            width: 100%;
+            background-color: #272727;
+            padding: 25px 0;
+            color: #fff;
+            text-align: center;
+            font-size: 15px;
+        }
+        .AddressAndPhones p{
+            margin-bottom: 25px;
+        }
+        .AddressAndPhones a{
+            color: #fff;
+            margin: 0 5px;
+        }
+        .OtherIcon a:hover{
+            color: #2ac5f4;
+        }
+        .LogoAndLink{
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+        .LogoAndLink img{
+            width: 100%;
+            vertical-align:top;
+        }
+        .menu-btn{
+            display: none;
+        }
+        .LogoAndLink-text{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .LogoBox{
+                width: 100%;
+        }
+        nav{
+            text-align: center;
+            position: absolute;
+            top: 75px;
+            right: 80px;
+        }
+        nav a
+        {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        #menu-control{
+            position: absolute;
+            left: -100px;
+        }
+        .SeeProjects{
+            text-align: center;
+            color: #fff;
+        }
+        .SeeProjects a{
+            padding: 22px 39px;
+            color: #fff;
+            background-color: #2ac5f4;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .SeeProjects a:hover
+        {
+            background-color: #000;
+        }
+        .OurServiceTitle{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 15PX;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        .OurServiceTitle h1{
+            margin-left: -60px;
+        }
+        .OurServiceTitle span{
+            position: relative;
+            height: 3px;
+            width: 60px;
+            background-color: #2ac5f4;
+            bottom: 20px;
+            left: 85px;
+        }
+        .OurServices{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .OurServices i{
+            margin:  20px;
+            color: #2ac5f4;
+        }
+        .OurServices h2{
+            margin: 10px 0;
+        }
+        .SerItem{
+            display: flex;
+        }
+        .Ourhistory{
+            margin-top: 100px;
+            margin: 50px 80px;
+            display: flex;
+        }
+        .HistoryTxt a{
+            color: #fff;
+            background-color: #397dfc;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 20px;
+            position: relative;
+            bottom: -40px;
+            left: 20px;
+        }
+        .HistoryTxt a:hover{
+            background-color: #000;
+        }
+        .porjectPics{
+            margin-top: 150px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .porjectPicsItem{
+            position: relative;
+        }
+        .porjectPicsItem img{
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            vertical-align: top;
+        }
+        .porjectPicsItem h3{
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 3;
+            position: absolute;
+            color: #fff;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+        .RecentNewsTitle{
+            padding: 30px;
+            text-align: center;
+        }
+        .RecentNews{
+                display: flex;
+                width: 100%;
+        }
+        .NewsItems img{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .post-inf{
+            text-decoration: none;
+            color: #2ac5f4;
+            margin-left: 5px;
+        }
+        .post-inf:hover{
+            color: #000;
+        }
+        .post-meta{
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: flex;
+        }
+        .news-title{
+            text-decoration: none;
+            color: #000;
+        }
+        .news-title:hover{
+            color: #2ac5f4;
+        }
+        .see-all{
+            text-align: center;
+            margin: 50px;
+        }
+        .see-all a{
+            text-decoration: none;
+            background-color: #389ffc;
+            color: #fff;
+            font-size: 16px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .see-all a:hover{
+            background-color: #000;
+        }
+        @media screen and (max-width: 767px) {
+            .LogoAndLink{
+                width: 100%;
+            }
+            .LogoBox img{
+               max-width: 258px;
+            }
+            .LogoBox{
+                width: 100%;
+                text-align: center;
+            }
+            .mainpic{
+                width: 100%;
+                min-height: 700px;
+            }
+            .LogoBox img{
+                margin: 20px;
+            }
+            nav{
+                display: none;
+                position: absolute;
+                text-align:left;
+                background-color: #3b3d42;
+                left: 0;
+                top: -150px;
+                width: 100%;
+            }
+            nav a{
+                display: block;
+                padding: 10px 20px;
+            }
+            input:checked~nav{
+                display: block;
+            }
+            .menu-btn{
+                display: block;
+                width: 40px;
+                height: 40px;
+                position: relative;
+            }
+            .menu-btn i{
+                position: absolute;
+                color: #fff;
+                top: 20px;
+                left: 20px;
+                margin: auto;
+            }
+            .SeeProjects h1{
+                font-size: 24px;
+                margin-top: 80px;
+            }
+            .SeeProjects h5{
+                font-size: 18px;
+                margin-top: 20px;
+            }
+            .SeeProjects a{
+                position: relative;
+                top: 60px;
+            }
+            .OurServices{
+                width: 100%;
+            }
+            .OurServices i{
+                font-size: 45px;
+            }
+            .OurServices h2{
+                font-size: 16px;
+            }
+            .OurServices p{
+                font-size: 16px;
+            }
+            .SerItem{
+                justify-content: center;
+                text-align: center;
+                flex-wrap: wrap;
+                width: 96%;
+                margin: 20px;
+            }
+            .OurServices{
+                flex-wrap: wrap;
+            }
+            .Ourhistory{
+                flex-wrap: wrap;
+            }
+            .Ourhistory img{
+                width: 100%;
+                order: -1;
+            }
+            .HistoryTxt h2{
+                font-size: 30px;
+                margin: 20px;
+            }
+            .HistoryTxt h3{
+                font-size:15px;
+                margin: 20px;
+            }
+            .HistoryTxt p{
+                font-size: 18px;
+                margin: 20px;
+            }
+            .porjectPicsItem{
+                width: 100%;
+            }
+            .RecentNews{
+                flex-wrap: wrap;
+            }
+            .NewsItems{
+                width: 100%;
+                margin: 20px;
+            }
+        }
+        @media screen and (min-width: 768px) {
+            .ConInfText{
+                width: 100%;
+                display: flex;
+            }
+
+            .AddressAndPhones p{
+                width: 47.3958333333333%;
+                margin: 1.47492625368732%;
+            }
+
+            .OtherIcon{
+                width: 100%;
+            }
+            .mainpic{
+                width: 100%;
+                min-height: 900px;
+            }
+            .LogoBox img{
+                margin: 20px;
+                max-width: 258px;
+            }
+            nav{
+                margin-top: 50px;
+            }
+            .SeeProjects h1{
+                font-size: 60px;
+                margin-top: 350px;
+            }
+            .SeeProjects h5{
+                font-size: 22px;
+                margin-top: 20px;
+            }
+            .SeeProjects a{
+                position: relative;
+                top: 60px;
+            }
+            .OurServices i{
+                font-size: 45px;
+            }
+            .OurServices h2{
+                font-size: 16px;
+            }
+            .OurServices p{
+                font-size: 16px;
+            }
+            .SerItem{
+                width: 28.125%;
+                margin: 20px 2.60416666666667% ;
+            }
+            .Ourhistory{
+                flex-wrap: wrap;
+            }
+            .Ourhistory img{
+                width: 100%;
+                order: -1;
+            }
+            .HistoryTxt h2{
+                font-size: 30px;
+                margin: 20px;
+            }
+            .HistoryTxt h3{
+                font-size:20px;
+                margin: 20px;
+            }
+            .HistoryTxt p{
+                font-size: 18px;
+                margin: 20px;
+            }
+            .porjectPicsItem{
+                width: 50%;
+            }
+            .RecentNews{
+                flex-wrap: wrap;
+            }
+            .NewsItems{
+                width: 100%;
+                margin: 20px;
+            }
+        }
+        @media screen and (min-width: 1025px) {
+            .AddressAndPhones{
+                padding-top: 10px;
+                height: 20px;
+                display: flex;
+            }
+
+            .ConInfText{
+                width: 80%;
+                display: flex;
+            }
+            .AddressAndPhones p{
+                width: 420px;
+                margin-right: -80px;
+            }
+            .OtherIcon{
+                margin-top: 10px;
+                padding-right: 75px;
+                text-align: right;
+            }
+            .LogoBox img{
+                margin: 20px;
+                max-width: 340px;
+            }
+            nav{
+                top: 15px;
+                left: 350px;
+            }
+            .SeeProjects h1{
+                font-size: 110px;
+                margin-top: 200px;
+            }
+            .SeeProjects h5{
+                font-size: 30px;
+                margin-top: 20px;
+            }
+            .SeeProjects a{
+                position: relative;
+                top: 60px;
+            }
+            .OurServices i{
+                font-size: 70px;
+            }
+            .OurServices h2{
+                font-size: 18px;
+            }
+            .OurServices p{
+                font-size: 18px;
+            }
+            .SerItem{
+                width: 29.4308943089431%;
+                margin: 20px 1.95121951219512% ;
+            }
+            .Ourhistory{
+                flex-wrap: nowrap;
+            }
+            .Ourhistory img{
+                order: 2;
+            }
+            .HistoryTxt h2{
+                font-size: 30px;
+                margin: 20px;
+            }
+            .HistoryTxt h3{
+                font-size:20px;
+                margin: 20px;
+            }
+            .HistoryTxt p{
+                font-size: 18px;
+                margin: 20px;
+            }
+            .porjectPicsItem{
+                width: 25%;
+            }
+            .NewsItems{
+                width: 31.3821138211382%;
+                margin: 10px 0.975609756097561%;
+            }
+            .NewsItems img{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warp">
+        <div class="AddressAndPhones">
+            <div class="ConInfText">
+                <p class="address"><i class="fas fa-map-marker-alt" style="color: #2ac5f4;margin: 0 10px;"></i>Address:
+                    4578 Marmora Road, Glasgow, D04 89GR</p>
+                <p class="phones"><i class="fas fa-phone" style="color: #2ac5f4;margin: 0 10px;"></i>Phones: (800)
+                    123-0045; 123-0046</p>
+            </div>
+            <div class="OtherIcon">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="LogoAndLink">
+            <img class="mainpic" src="ManufaxPic/slide-1.png" alt="">
+            <div class="LogoAndLink-text">
+                <div class="LogoBox">
+                    <img src="ManufaxPic/logo.png" alt="">
+                </div>
+                <input type="checkbox" name="" id="menu-control">
+                <label for="menu-control" class="menu-btn">
+                    <i aria-hidden="true" class="fas fa-bars"></i>
+                    <i aria-hidden="true" class="fas fa-bars"></i>
+                    <i aria-hidden="true" class="fas fa-bars"></i>
+                </label>
+                <nav>
+                    <a href="#" class="link-item">HOME</a>
+                    <a href="#" class="link-item">ABOUT</a>
+                    <a href="#" class="link-item">SERVICES</a>
+                    <a href="#" class="link-item">PROJECTS</a>
+                    <a href="#" class="link-item">BLOG</a>
+                    <a href="#" class="link-item">CONTACTS</a>
+                </nav>
+                <div class="SeeProjects">
+                    <h1>CONSTRUCTION</h1>
+                    <h5>SEE HOW A10-STORIES TOWER'S BEING, IN A TIME-LAPSE!</h5>
+                    <a href="#" class="SeeProBtn">SEE OUR RECENT PROJECTS</a>
+                </div>
+            </div>
+        </div>
+        <div class="OurServiceTitle">
+            <span></span>
+            <h1>OUR SERVICES</h1>
+        </div>
+        <div class="OurServices">
+            <div class="SerItem">
+                <i class="fas fa-home"></i>
+                <div>
+                    <h2>BUILDING INFORMATION MODELING</h2>
+                    <p>Oftentimes physical and functional essence of any construction project needs to be represented digitally, in a 3D model format. In...</p>
+                </div>
+            </div>
+            <div class="SerItem">
+                <i class="fab fa-codepen"></i>
+                <div>
+                    <h2>CONSTRUCTION SERVICES</h2>
+                    <p>Our customers love the pace/quality tempo that we show during each of the principal construction processes! We're comfortable with any...</p>
+                </div>
+            </div>
+            <div class="SerItem">
+                <i class="fas fa-th"></i>
+                <div>
+                    <h2>PRE-CONSTRUCTION SERVICES</h2>
+                    <p>We take our time on initial planning before any construction begins, to balance all the financial and efficiency issues beforehand.This...</p>
+                </div>
+            </div>
+            <div class="SerItem">
+                <i class="fas fa-edit"></i>
+                <div>
+                    <h2>DESIGN-BUILD</h2>
+                    <p>If a project is not too complex, we may hire a designer-builder type of contractor, to make the longevity of...</p>
+                </div>
+                </div>
+                <div class="SerItem">
+                <i class="far fa-building"></i>
+                <div>
+                    <h2>CONSTRUCTION MANAGEMENT</h2>
+                    <p>Construction project management is essential. We're using the most time and iterations efficient life cycles for that.As you may know,...</p>
+                </div>
+            </div>
+            <div class="SerItem">
+                <i class="far fa-address-book"></i>
+                <div>
+                    <h2>GENERAL CONTRACTING</h2>
+                    <p>We have a long list of professional contractors, whom our engineers and architects enjoy to work with on a majority...</p>
+                </div>
+                </div>
+        </div>
+        <div class="Ourhistory">
+            <div class="HistoryTxt">
+                <h2>OUR HISTORY</h2>
+                <h3>OUR CONSTRUCTION COMPANY HAS BEEN FOUNDED 10 YEARS AGO, AT THE VERY PEAK OF THE BUILDING FRENZY IN THE US…</h3>
+                <p>Since then we’ve built hundreds of commercial, government and private buildings and facilities. It may not sound like a lot, but if you estimate the manpower, working hours, materials, planning and correlating that were all involved in completing each separate project, then our productivity is immense!</p>
+                <a href="#">READ MORE</a>
+            </div>
+            <img src="ManufaxPic/index-2.png" alt="">
+        </div>
+        <div class="porjectPics">
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-7.jpg" alt="">
+                <h3>COMMERCIAL</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-6.jpg" alt="">
+                <h3>CULTURAL / LIFESTYLE</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-5.jpg" alt="">
+                <h3>DATA / TECHNOLOGY</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-4.jpg" alt="">
+                <h3>EDUCATIONAL</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-2.jpg" alt="">
+                <h3>GOVERNMENT / MILITARY</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-3.jpg" alt="">
+                <h3>HEALTHCARE</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-1.jpg" alt="">
+                <h3>MANUFACTURING / INDUSTRIAL</h3>
+            </div>
+            <div class="porjectPicsItem">
+                <img src="ManufaxPic/project-8.jpg" alt="">
+                <h3>WAREHOUSE / LOGISTICS</h3>
+            </div>
+        </div>
+        <div class="RecentNewsTitle">
+            <h2>RECENT NEWS</h2>
+        </div>
+        <div class="RecentNews">
+            <div class="NewsItems">
+                <img src="ManufaxPic/blog-27.jpg" alt="">
+                <a href="#" class="news-title">FUTURE PROOFING HOSPITALS</a>
+                <div class="post-meta">
+                    <p>Posted by</p>
+                    <a href="#" class="post-inf"> admin</a>
+                    <a href="#" class="post-inf">December 7, 2018</a>
+                </div>
+                <p>By improving the physical layout of hospitals and medical facilities, we can enhance and increase safety mechanisms, improve care, and…</p>
+            </div>
+            <div class="NewsItems">
+                <img src="ManufaxPic/blog-26.jpg" alt="">
+                <a href="#" class="news-title">BIKE PARTS WAREHOUSE, DE</a>
+                <div class="post-meta">
+                    <p>Posted by</p>
+                    <a href="#" class="post-inf"> admin</a>
+                    <a href="#" class="post-inf">December 7, 2018</a>
+                </div>
+                <p>Delaware proved to be a very friendly place to work at… While invited there for completing a mid-sized warehouse for…</p>
+            </div>
+            <div class="NewsItems">
+                <img src="ManufaxPic/blog-28.jpg" alt="">
+                <a href="#" class="news-title">JOY HOTEL & CASINO</a>
+                <div class="post-meta">
+                    <p>Posted by</p>
+                    <a href="#" class="post-inf"> admin </a>
+                    <a href="#" class="post-inf">December 7, 2018</a>
+                </div>
+                <p>This hotel & casino complex is our most recent completed building… The whole structure that took us 6 months to…</p>
+            </div>
+        </div>
+        <div class="see-all">
+            <a href="#">SEE ALL NEWS</a>
+        </div>
+    </div>
+</body>
+
+</html>
