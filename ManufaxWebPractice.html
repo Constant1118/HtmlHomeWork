@@ -216,6 +216,57 @@
         .see-all a:hover{
             background-color: #000;
         }
+        .FooterInf{
+            width: 100%;
+            background-color: #333333;
+            display: flex;
+            color: #fff;
+        }
+        .FooterInf h2{
+            margin-bottom: 10px;
+        }
+        .FooterInf nav a{
+            color: #2ac5f4;
+            text-decoration: none;
+        }
+        .FooterInf .L-title{
+            color: #fff;
+            text-decoration: none;
+        }
+        .FooterInf .L-title:hover{
+            color: #2ac5f4;
+        }
+        .FooterInf .InfLink a{
+            color: #fff;
+            text-decoration: none;
+        }
+        .FooterInf .InfLink a:hover{
+            color: #2ac5f4;
+        }
+        .TelLink{
+            text-decoration: none;
+            color: #2ac5f4;
+        }
+        .TelLink:hover{
+            color: #fff;
+        }
+        .FooterItem li{
+            margin-top: 10px;
+        }
+        .FooterItem li a{
+            text-decoration: none;
+            color: #2ac5f4;
+        }
+        .FooterItem li a:hover{
+            color: #fff;
+        }
+        .FooterItem .Email a{
+            text-decoration: none;
+            color: #2ac5f4;
+        }
+        .FooterItem .Email a:hover{
+            color: #fff;
+        }
         @media screen and (max-width: 767px) {
             .LogoAndLink{
                 width: 100%;
@@ -326,6 +377,13 @@
                 width: 100%;
                 margin: 20px;
             }
+            .FooterInf{
+                flex-wrap: wrap;
+            }
+            .FooterItem{
+                width: 94.7848761408084%;
+                margin: 20px 2.60756192959583%;
+            }
         }
         @media screen and (min-width: 768px) {
             .ConInfText{
@@ -405,6 +463,13 @@
             .NewsItems{
                 width: 100%;
                 margin: 20px;
+            }
+            .FooterInf{
+                flex-wrap: wrap;
+            }
+            .FooterItem{
+                width: 44.7916666666667%;
+                margin: 20px 2.60416666666667%;
             }
         }
         @media screen and (min-width: 1025px) {
@@ -487,6 +552,10 @@
             }
             .NewsItems img{
                 width: 100%;
+            }
+            .FooterItem{
+                width: 21.0975609756098%;
+                margin: 20px 1.95121951219512%;
             }
         }
     </style>
@@ -668,5 +737,49 @@
         </div>
     </div>
 </body>
-
+<footer>
+    <div class="FooterInf">
+        <div class="FooterItem">
+            <img src="ManufaxPic/logo.png" alt="">
+            <p>Construction’s core values have been shaped over more than 10 years of delivering the finest construction services to our clients. They stood to the test of time and these principles remain our bedrock lynchpins. We never tried to cut on either quality, the pace of work or any other construction aspect. We stay true to our full promise of efficiency!</p>
+        </div>
+        <div class="FooterItem">
+            <h2>NAVIGATION</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Bolg</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </div>
+        <div class="FooterItem">
+            <h2>RECENT COMMENTS</h2>
+            <a href="#" class="L-title">The art and science of color planning for performance requirements</a>
+            <div class="InfLink">
+                <p>Posted by</p><a href="#">admin</a>
+            </div>
+            <a href="#" class="L-title">Future proofing hospitals</a>
+            <div class="InfLink">
+                <p>Posted by</p><a href="#">admin</a>
+            </div>
+        </div>
+        <div class="FooterItem">
+            <h2>CONTACTS</h2>
+            <p>Address: 4578 Marmora Road,</p>
+            <p>Glasgow, D04 89GR</p>
+            <div class="Tel">
+                <p>Phones:</p>
+                <a class="TelLink" href="#">(800) 123-0045</a>
+                <p>;</p>
+            </div>
+            <a class="TelLink" href="#"></a>(800) 123-0046
+            <div class="Email">
+                <p>Email: </p>
+                <a href="#">info@demolink.org</a>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
