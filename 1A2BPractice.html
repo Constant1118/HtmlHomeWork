@@ -19,9 +19,9 @@
         <div class="row mx-auto">
             <div class="col-12 col-md-6 mx-auto">
                 <div class="btn-group w-100 " role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-light game-start-before" onclick="create_answer()">開始</button>
-                    <button type="button" class="btn btn-light game-start-after" onclick="restart_game()" disabled="disabled">重來</button>
-                    <button type="button" class="btn btn-light game-start-after" onclick="show_answer()" disabled="disabled">看答案</button>
+                    <button type="button" class="btn btn-light star_be" onclick="create_answer()">開始</button>
+                    <button type="button" class="btn btn-light star-af" onclick="restart_game()" disabled="disabled">重來</button>
+                    <button type="button" class="btn btn-light star-af" onclick="show_answer()" disabled="disabled">看答案</button>
                 </div>
                 <div class="txt_promot">
 
@@ -30,9 +30,9 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">猜的數字</span>
                     </div>
-                    <input type="text" class="form-control game-start-after" name="inputnumber" id="inputnumber" disabled="disabled">
+                    <input type="text" class="form-control star-af" name="inputnumber" id="inputnumber" disabled="disabled">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary game-start-after" type="button" onclick="guess_number()" disabled="disabled">猜!</button>
+                        <button class="btn btn-outline-secondary star-af" type="button" onclick="guess_number()" disabled="disabled">確定</button>
                     </div>
                 </div>
             </div>
@@ -42,10 +42,10 @@
     <script>
         var answer_str = '';
         var input_str = '';
-        var answer_num = new Array();
-        var input_num = new Array();
-        var after = document.getElementsByClassName('game-start-after');
-        var before = document.getElementsByClassName('game-start-before');
+        var ansNum = new Array();
+        var inpNum = new Array();
+        var after = document.getElementsByClassName('star-af');
+        var before = document.getElementsByClassName('star_be');
         var txt_promot = document.getElementsByClassName('txt_promot')[0];
         var promot = document.createElement('div');
         txt_promot.appendChild(promot);
@@ -58,14 +58,14 @@
             input.value = '';
             promot.innerHTML = '';
             for (let i = 0; i < 4; i++) {
-                answer_num[i] = Math.round(Math.random() * 8 + 1);
+                ansNum[i] = Math.round(Math.random() * 8 + 1);
                 for (let j = 0; j < i; j++) {
-                    while (answer_num[j] == answer_num[i]) {
+                    while (ansNum[j] == ansNum[i]) {
                         j = 0;
-                        answer_num[i] = Math.round(Math.random() * 8 + 1);
+                        ansNum[i] = Math.round(Math.random() * 8 + 1);
                     }
                 }
-                answer_str += `${answer_num[i]}`;
+                answer_str += `${ansNum[i]}`;
             }
             for (let game of after) {
                 game.removeAttribute('disabled');
@@ -74,7 +74,7 @@
                 game.setAttribute('disabled', 'disabled');
             }
             console.log(answer_str);
-            console.log(answer_num);
+            console.log(ansNum);
         }
 
         function guess_number() {
@@ -82,9 +82,9 @@
             input_str = document.getElementById('inputnumber').value;
             console.log(input_str);
             stringtoarray();
-            console.log(input_num);
-            JudgeAB();
-            show_countofAB();
+            console.log(inpNum);
+            A_B_Num();
+            countofAB();
             countofA = 0;
             countofB = 0;
             input.value = '';
@@ -92,18 +92,16 @@
 
         function stringtoarray() {
             for (let i = 0; i < 4; i++) {
-                input_num[i] = parseInt(input_str[i]);
+                inpNum[i] = parseInt(input_str[i]);
             }
         }
 
         var countofA = 0, countofB = 0;
-        function JudgeAB() {
-            var intersect = answer_num.filter(num => input_num.includes(num));
-            console.log(intersect);
+        function A_B_Num() {
+            var intersect = ansNum.filter(num => inpNum.includes(num));
             var total = intersect.length;
-            console.log(total);
-            for (let i = 0; i < answer_num.length; i++) {
-                if (answer_num[i] == input_num[i]) {
+            for (let i = 0; i < ansNum.length; i++) {
+                if (ansNum[i] == inpNum[i]) {
                     countofA++;
                 }
             }
@@ -111,19 +109,19 @@
             console.log(`${countofA}A${countofB}B`);
         }
 
-        function show_countofAB() {
+        function countofAB() {
             var showall = document.createElement('div');
             showall.id = 'showall'
             if (countofA == 4) {
                 showall.innerHTML = `<span style="background-color: #16982b; color:#fff;">${countofA}A${countofB}B</span> <span>${input_str}</span>`;
-                var success = setTimeout("alert('遊戲結束')", 300);
+                var success = setTimeout("alert('猜中了，遊戲結束')", 300);
                 for (let game of before) {
                     game.removeAttribute('disabled');
                     input.value = '';
                 }
             }
             else {
-                showall.innerHTML = `<span style="background-color: red;color:#fff; ">${countofA}A${countofB}B</span> <span>${input_str}</span>`;
+                showall.innerHTML = `<span style="background-color: #fa0;color:#fff; ">${countofA}A${countofB}B</span> <span>${input_str}</span>`;
             }
             promot.appendChild(showall);
         }
