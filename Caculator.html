@@ -25,9 +25,9 @@
 
     <div class="container">
         <div class="row ">
-            <div class="col-12 col-md-6 mx-auto px-0 border bigbox">
+            <div class="col-8 col-md-4 mx-auto px-0 border bigbox">
                 <div class="txt w-100">
-                    <p class="txt-promot mt-2">記錄:</p>
+                    <p class="txt-promot mt-2">計算過程:</p>
                     <p class="promot mb-3"></p>
                     <input class="mx-auto mb-3 d-block col-8 col-md-10" readonly="readonly" name="inputNum" id="input">
                 </div>
@@ -168,19 +168,19 @@
                 switch (operator) {
                     case '+':
                         result = formula + parseFloat(input.value);
-                        equal_fuc_resultnot0()
+                        caculator_fuc_resultnot0()
                         break;
                     case '-':
                         result = formula - parseFloat(input.value);
-                        equal_fuc_resultnot0()
+                        caculator_fuc_resultnot0()
                         break;
                     case '*':
                         result = formula * parseFloat(input.value);
-                        equal_fuc_resultnot0()
+                        caculator_fuc_resultnot0()
                         break;
                     case '/':
                         result = formula / parseFloat(input.value);
-                        equal_fuc_resultnot0()
+                        caculator_fuc_resultnot0()
                         break;
                 };
 
@@ -190,31 +190,31 @@
                 switch (operator) {
                     case '+':
                         result = formula + parseFloat(input.value);
-                        equal_fuc();
+                        caculator_fuc();
                         break;
                     case '-':
                         result = formula - parseFloat(input.value);
-                        equal_fuc();
+                        caculator_fuc();
                         break;
                     case '*':
                         result = formula * parseFloat(input.value);
-                        equal_fuc();
+                        caculator_fuc();
                         break;
                     case '/':
                         result = formula / parseFloat(input.value);
-                        equal_fuc();
+                        caculator_fuc();
                         break;
                 };
             }
         }
-        function equal_fuc() {
+        function caculator_fuc() {
             txt_formula = `${txt_formula}${input.value}`;
             input.value = result;
             promot.innerHTML = txt_formula;
             txt_formula = '';
             formula = result;
         }
-        function equal_fuc_resultnot0() {
+        function caculator_fuc_resultnot0() {
             input.value = `${formula}`;
             txt_formula = txt_formula.substring(0, txt_formula.length - 1);
             promot.innerHTML = txt_formula;
@@ -224,62 +224,6 @@
             formula = parseFloat(input.value);
             txt_formula = `${txt_formula}${formula}${operator}`;
             promot.innerHTML = txt_formula;
-        }
-        function Root() {
-            if (input.value.length == 0) {
-                input.value = '';
-            }
-            else {
-                formula = parseFloat(input.value);
-                result = Math.sqrt(formula, 2);
-                input.value = result;
-                txt_formula = `2√${formula}`;
-                promot.innerHTML = txt_formula;
-                formula = result;
-                txt_formula = '';
-            }
-        }
-        function Square() {
-            if (input.value.length == 0) {
-                input.value = '';
-            }
-            else {
-                formula = parseFloat(input.value);
-                result = Math.pow(formula, 2);
-                input.value = result;
-                promot.innerHTML = `${formula}<sup>2</sup>`;
-                formula = result;
-                txt_formula = '';
-            }
-        }
-        function Reciprocal() {
-            if (input.value.length == 0) {
-                input.value = '';
-            }
-            else {
-                formula = parseFloat(input.value);
-                result = 1 / formula;
-                input.value = result;
-                promot.innerHTML = `1/${formula}`;
-                formula = result;
-                txt_formula = '';
-            }
-        }
-        function Factorial() {
-            if (input.value.length == 0) {
-                input.value = '';
-            }
-            else {
-                result = 1;
-                formula = parseFloat(input.value);
-                for (let i = 1; i <= formula; i++) {
-                    result = result * i;
-                }
-                input.value = result;
-                promot.innerHTML = `${formula}!`;
-                formula = result;
-                txt_formula = '';
-            }
         }
 
     </script>
