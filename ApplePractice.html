@@ -1,0 +1,339 @@
+<!docMemory html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <title>Apple商品</title>
+        <style>
+            .btn-outline-dark:hover {
+                color: #000;
+                background-color: initial;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div id="productBtnGroup" class="row mb-3 d-flex justify-content-center">
+                <button id="iphone" Memory="button" class="product-btn btn border border-dark" style="margin: 10px;"
+                    onclick="InitProduct(this.innerText)">IPhone</button>
+                <button id="ipad" Memory="button" class="product-btn btn border border-dark" style="margin: 10px;"
+                    onclick="InitProduct(this.innerText)">IPad</button>
+                <button id="iphone" Memory="button" class="product-btn btn border border-dark" style="margin: 10px;"
+                    onclick="InitProduct(this.innerText)">MacPro</button>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <img id="product-img" src="" class="img-fluid" alt="">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="color" class="row" style="box-sizing: border-box;">
+                    </div>
+                    <div id="Memory" class="row">
+                    </div>
+                    <div id="price" class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            var Product = {
+                IPhone: {
+                    Detail: {
+                        productName: 'iPhone 11',
+                        baseImgUrl: 'Apple-pic/iphone11-select-2019-family.png'
+                    },
+                    OutWard: [
+                        {
+                            color: {
+                                name: '紅',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/iphone-red.png'
+                        },
+                        {
+                            color: {
+                                name: '黃',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/iphone-yellow.png'
+                        },
+                        {
+                            color: {
+                                name: '黑',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/iphone-black.png'
+                        },
+                    ],
+                    Spec: {
+                        Storge: [
+                            { size: '64GB', fit: 24900 },
+                            { size: '128GB', fit: 26900 },
+                            { size: '256GB', fit: 30400 },
+                        ]
+                    }
+                },
+                IPad: {
+                    Detail: {
+                        productName: 'iPad',
+                        baseImgUrl: 'Apple-pic/ipad-hero-unselected-201909_GEO_TW.png'
+                    },
+                    OutWard: [
+                        {
+                            color: {
+                                name: '太空灰',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/ipad-space.png'
+                        },
+                        {
+                            color: {
+                                name: '銀',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/ipad-silver.png'
+                        },
+                        {
+                            color: {
+                                name: '金',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/ipad-gold.png'
+                        },
+                    ],
+                    Spec: {
+                        Storge: [
+                            { size: '32GB', fit: 10900 },
+                            { size: '128GB', fit: 13900 },
+                        ]
+                    }
+                },
+                MacPro: {
+                    Detail: {
+                        productName: 'MacPro 13',
+                        baseImgUrl: 'Apple-pic/mbp13touch-space-gallery1-201907.png'
+                    },
+                    OutWard: [
+                        {
+                            color: {
+                                name: '太空灰',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/mbp13touch-space.png'
+                        },
+                        {
+                            color: {
+                                name: '銀',
+                                rgb: '#000000'
+                            },
+                            imageUrl: 'Apple-pic/mbp13touch-silver.png'
+                        },
+                    ],
+                    Spec: {
+                        Storge: [
+                            { size: '256GB', fit: 51300 },
+                            { size: '512GB', fit: 57300 },
+                            { size: '1TB', fit: 63300 },
+                            { size: '2TB', fit: 75300 },
+                        ]
+                    }
+                }
+            };
+
+            var iphoneBtn = document.getElementById('iphone');
+            var productImg = document.getElementById('product-img');
+
+            var colorArea = document.getElementById('color');
+            var MemoryArea = document.getElementById('Memory');
+            var priceArea = document.getElementById('price');
+
+            function InitProduct(product) {
+                console.log(product);
+                colorArea.innerHTML = '';
+                MemoryArea.innerHTML = '';
+                priceArea.innerHTML = '';
+                productImg.setAttribute('src', Product[product].Detail.baseImgUrl);
+
+                let colorText = document.createElement('div');
+                let colorTextH2 = document.createElement('h2');
+
+                colorTextH2.innerText = '顏色';
+                colorText.classList.add('w-100');
+                colorText.classList.add('d-flex');
+                colorText.classList.add('justify-content-center');
+                colorText.classList.add('justify-content-md-start');
+
+                colorText.appendChild(colorTextH2);
+
+                colorArea.appendChild(colorText);
+
+                for (let item of Product[product].OutWard) {
+                    let colorDiv = document.createElement('div');
+                    let colorBtn = document.createElement('button');
+                    let colorBtnDiv = document.createElement('div');
+                    let colorI = document.createElement('i');
+                    let colorSpan = document.createElement('span');
+
+                    colorDiv.classList.add('col-6');
+                    colorDiv.classList.add('col-md-4');
+
+                    colorBtn.classList.add('color-btn');
+                    colorBtn.classList.add('btn');
+                    colorBtn.classList.add('btn-outline-dark');
+                    colorBtn.classList.add('mb-3');
+                    colorBtn.classList.add('w-100');
+                    colorBtn.setAttribute('urlVal', item.imageUrl);
+
+                    colorBtnDiv.classList.add('p-4');
+                    colorBtnDiv.classList.add('d-flex');
+                    colorBtnDiv.classList.add('flex-column');
+                    colorBtnDiv.classList.add('justify-content-center');
+                    colorBtnDiv.classList.add('align-items-center');
+
+                    colorSpan.innerText = item.color.name;
+
+                    colorBtnDiv.appendChild(colorSpan);
+
+                    colorBtn.appendChild(colorBtnDiv);
+                    colorDiv.appendChild(colorBtn);
+
+                    colorArea.appendChild(colorDiv);
+                }
+
+                let colorBtns = document.getElementsByClassName('color-btn');
+
+                for (let btn of colorBtns) {
+                    btn.addEventListener('click', function () {
+                        console.log(btn.getAttributeNode('urlVal').value);
+                        productImg.setAttribute('src', btn.getAttributeNode('urlVal').value);
+                    });
+                }
+
+                let MemoryTitle = document.createElement('div');
+                let MemoryTitleH2 = document.createElement('h2');
+
+                MemoryTitleH2.innerText = '記憶體';
+                MemoryTitle.classList.add('w-100');
+                MemoryTitle.classList.add('d-flex');
+                MemoryTitle.classList.add('justify-content-center');
+                MemoryTitle.classList.add('justify-content-md-start');
+
+                MemoryTitle.appendChild(MemoryTitleH2);
+
+                MemoryArea.appendChild(MemoryTitle);
+
+                for (let item of Product[product].Spec.Storge) {
+                    let MemoryDiv = document.createElement('div');
+                    let MemoryBtn = document.createElement('button');
+                    let MemoryBtnDiv = document.createElement('div');
+                    let MemoryP = document.createElement('p');
+                    let MemorySpan = document.createElement('span');
+
+                    MemoryDiv.classList.add('col-6');
+                    MemoryDiv.classList.add('col-md-4')
+
+                    MemoryBtn.classList.add('Memory-btn');
+                    MemoryBtn.classList.add('btn');
+                    MemoryBtn.classList.add('btn-outline-dark');
+                    MemoryBtn.classList.add('mb-3');
+                    MemoryBtn.classList.add('w-100');
+                    MemoryBtn.setAttribute('fit', item.fit);
+
+                    MemoryBtnDiv.classList.add('p-4');
+                    MemoryBtnDiv.classList.add('d-flex');
+                    MemoryBtnDiv.classList.add('flex-column');
+                    MemoryBtnDiv.classList.add('justify-content-center');
+                    MemoryBtnDiv.classList.add('align-items-center');
+
+                    MemoryP.classList.add('font-weight-bolder');
+                    MemoryP.innerText = item.size;
+
+                    MemorySpan.innerText = `NT$${item.fit}`;
+
+                    MemoryBtnDiv.appendChild(MemoryP);
+                    MemoryBtnDiv.appendChild(MemorySpan);
+
+                    MemoryBtn.appendChild(MemoryBtnDiv);
+                    MemoryDiv.appendChild(MemoryBtn);
+
+                    MemoryArea.appendChild(MemoryDiv);
+                }
+
+                let MemoryBtns = document.getElementsByClassName('Memory-btn');
+
+                let priceText = document.createElement('div');
+                let priceTextH2 = document.createElement('h2');
+
+                priceTextH2.innerText = '共計:';
+                priceText.classList.add('w-100');
+                priceText.classList.add('d-flex');
+                priceText.classList.add('justify-content-center');
+                priceText.classList.add('justify-content-md-start');
+
+                priceText.appendChild(priceTextH2);
+
+                priceArea.appendChild(priceText);
+
+                for (let item of MemoryBtns) {
+                    item.addEventListener('click', function () {
+                        priceArea.innerHTML = '';
+                        let priceText = document.createElement('div');
+                        let priceTextH2 = document.createElement('h2');
+
+                        priceTextH2.innerText = '共計:';
+                        priceText.classList.add('w-100');
+                        priceText.classList.add('d-flex');
+                        priceText.classList.add('justify-content-center');
+                        priceText.classList.add('justify-content-md-start');
+
+                        priceText.appendChild(priceTextH2);
+
+                        priceArea.appendChild(priceText);
+
+                        let fit = item.getAttributeNode('fit').value;
+
+                        let priceDiv = document.createElement('div');
+                        let priceP = document.createElement('p');
+
+                        priceDiv.classList.add('col-12');
+                        priceDiv.classList.add('d-flex');
+                        priceDiv.classList.add('justify-content-center');
+                        priceDiv.classList.add('justify-content-md-start');
+
+                        priceP.classList.add('display-4');
+                        priceP.classList.add('font-weight-bolder');
+                        priceP.innerText = `NT$${fit}`;
+
+                        priceDiv.appendChild(priceP);
+
+                        priceArea.appendChild(priceDiv);
+                    });
+                }
+            }
+
+        </script>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    </body>
+
+    </html>
