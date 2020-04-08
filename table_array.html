@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ipad商品table</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        img{
+            width: 50px;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td {
+            text-align: start;
+        }
+
+        th:hover {
+            cursor: pointer;
+            background-color: #fa0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1 style="margin-bottom: 20px;">Apple Ipads</h1>
+
+    <script>
+
+        var ipad = '';
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                ipad = JSON.parse(this.responseText);
+                addthead();
+                addbody();
+                var _click = document.getElementsByTagName("th");
+                for (let item of _click) {
+                    item.onclick = function () {
+                        _Sort(item);
+                    }
+                }
+            }
+            xhr.open('GET', "https://bs-frontend.azurewebsites.net/api/Apple/IPad");
+            xhr.send();
+        }
+
+
+        function addthead() {
+            var table = document.createElement('table');
+            document.body.appendChild(table);
+            var thead = document.createElement('thead');
+            table.appendChild(thead);
+            for (var prop in ipad.products[0]) {
+                var _th = document.createElement('th');
+                thead.appendChild(_th);
+                _th.innerHTML = prop;
+            }
+        }
+
+        function addbody() {
+            let table = document.getElementsByTagName('table')[0];
+            var tbody = document.createElement('tbody');
+            table.appendChild(tbody);
+            for (let i = 0; i < ipad.products.length; i++) {
+                var tr = document.createElement('tr');
+                tbody.appendChild(tr);
+                for (let prop in ipad.products[i]) {
+                    var td = document.createElement('td');
+                    if(prop == 'picture'){
+                        var _img = document.createElement('img');
+                        _img.src = (`${ipad.products[i][prop]}`);
+                        td.appendChild(_img);
+                    }
+                    else {
+                        td.innerHTML = ipad.products[i][prop];
+                    }
+                        tr.appendChild(td);
+                }
+            }
+        }
+
+        function _Sort(_click) {
+            var type = _click.innerHTML;
+            var _tbody = document.getElementsByTagName('tbody')[0];
+            _tbody.remove(true);
+            ipad.products.sort(function (a, b) {
+                var boolean = a[type] < b[type] ? -1 : 1;
+                return boolean;
+            });
+            ifsort = false;
+            addbody();
+        }
+
+    </script>
+
+</body>
+
+</html>
