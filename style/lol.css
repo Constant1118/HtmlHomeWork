@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  background-color: #cccccc;
+  text-align: center;
+}
+
+p {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+h2 {
+  color: #fff;
+}
+
+img {
+  position: relative;
+  z-index: 20;
+}
+
+.col-12 {
+  position: relative;
+  background-color: #000000;
+  padding: 20px 0;
+}
+
+img:hover {
+  cursor: pointer;
+  z-index: 0;
+}
+/*# sourceMappingURL=lol.css.map */

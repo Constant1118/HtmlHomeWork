@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/lol.css">
+    <title>lol web practice</title>
+
+</head>
+
+<body>
+
+    <h1>League Of Legends Champions</h1>
+
+    <div class="container">
+        <div class="row" id="row"></div>
+    </div>
+
+    <template id="champions_row">
+        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4"></div>
+    </template>
+
+    <script>
+
+        var champions = '';
+        var count = 0;
+
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                champions = JSON.parse(this.responseText);
+                addrow();
+                let _click = document.getElementsByClassName("col-12");
+                for (let item of _click) {
+                    item.onclick = function () {
+                        alert(`Champion's story`);
+                    }
+                }
+            }
+            xhr.open('GET', "http://127.0.0.1:5500/lol.json");
+            xhr.send();
+        }
+
+        function addrow() {
+            let _row = document.getElementById('row')
+            for (let i = 0; i < champions.length; i++) {
+                let _col = document.createElement('div');
+                _col.classList.add('col-12');
+                _col.classList.add('col-md-3');
+                for (let prop in champions[i]) {
+                    if (prop == 'pic') {
+                        var _img = document.createElement('img');
+                        _img.src = (`lol_pic/${champions[i][prop]}`);
+                        _col.appendChild(_img);
+                    }
+                    else if(prop == 'name') {
+                        var _h2 = document.createElement('h2');
+                        _h2.innerHTML = champions[i][prop];
+                        _col.appendChild(_h2);
+                    }
+                    else{
+                        var _p = document.createElement('p');
+                        _p.innerHTML = champions[i][prop];
+                        _col.appendChild(_p);
+                    }
+                }
+                _row.appendChild(_col);
+            }
+        }
+
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
