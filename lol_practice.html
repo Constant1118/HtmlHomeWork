@@ -37,7 +37,7 @@
         window.onload = function () {
             let xhr = new XMLHttpRequest();
             xhr.onload = function () {
-                champions = JSON.parse(this.responseText);
+                champions = JSON.parse(this.response);
                 addrow();
                 let _click = document.getElementsByClassName("col-12");
                 for (let item of _click) {
