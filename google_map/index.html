@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mask Map</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map_data = '';
+        var map;
+        function initMap() {
+            var start = { lat: 24.758971, lng: 120.954389 };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: start
+            });
+            var icons = {
+                mask: 'mask.png'
+            }
+
+        }
+        $.ajax({
+            type: "Get",
+            url: "google_map.json",
+            success: function (response) {
+                map_data = response;
+                for (let i = 0; i < map_data.features.length; i++) {
+                    if (map_data["features"][i]["properties"]["masksLeft"]+map_data["features"][i]["properties"]["childMasksLeft"] > 0) {
+                        let marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(map_data["features"][i]["geometry"]["coordinates"][1], map_data["features"][i]["geometry"]["coordinates"][0]),
+                            icon: 'mask.png',
+                            map: map,
+                            title:`口罩剩餘${map_data["features"][i]["properties"]["masksLeft"]+map_data["features"][i]["properties"]["childMasksLeft"]}個`
+                        });
+                    }
+                    else{
+                        let marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(map_data["features"][i]["geometry"]["coordinates"][1], map_data["features"][i]["geometry"]["coordinates"][0]),
+                            icon: 'cry.png',
+                            map: map,
+                            title:'口罩沒了呦!'
+                        });
+                    }
+
+                };
+            }
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
