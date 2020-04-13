@@ -42,9 +42,9 @@
         }
         $.ajax({
             type: "Get",
-            url: "google_map.json",
+            url: "https://maskmap.azurewebsites.net/api/mask/getmaskstock",
             success: function (response) {
-                map_data = response;
+                map_data = JSON.parse(response);
                 for (let i = 0; i < map_data.features.length; i++) {
                     if (map_data["features"][i]["properties"]["masksLeft"]+map_data["features"][i]["properties"]["childMasksLeft"] > 0) {
                         let marker = new google.maps.Marker({
