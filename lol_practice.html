@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,60 +24,73 @@
         <div class="row" id="row"></div>
     </div>
 
-    <template id="champions_row">
-        <div class="col-12 col-md-4"></div>
-        <div class="col-12 col-md-4"></div>
-        <div class="col-12 col-md-4"></div>
-        <div class="col-12 col-md-4"></div>
-    </template>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title inner-text" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
 
-        var champions = '';
-        var count = 0;
+        let modle_title = document.getElementById("exampleModalLabel");
+        let modle_body = document.querySelector('.modal-body')
+        $.ajax({
+            type: "Get",
+            url: "https://raw.githubusercontent.com/ngryman/lol-champions/master/champions.json",
+            success: function (response) {
 
-        window.onload = function () {
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function () {
-                champions = JSON.parse(this.response);
-                addrow();
-                let _click = document.getElementsByClassName("col-12");
-                for (let item of _click) {
-                    item.onclick = function () {
-                        alert(`Champion's story`);
+                champions = JSON.parse(response);
+                let _row = document.getElementById('row')
+                for (let i = 0; i < champions.length; i++) {
+                    let _col = document.createElement('div');
+                    _col.classList.add('col-4');
+                    _col.classList.add('col-md-2');
+                    for (let prop in champions[i]) {
+                        if (prop == 'icon') {
+                            var _img = document.createElement('img');
+                            _img.src = (champions[i][prop]);
+                            _col.appendChild(_img);
+                            _img.addEventListener('click', () => {
+                                $('#exampleModal').modal('toggle');
+                                modle_title.textContent = champions[i].name;
+                                for(item in champions[i].stats){
+                                    let _p = document.createElement('p');
+                                    _p.innerHTML=(`${item}:${champions[i].stats[item]}`);
+                                    modle_body.appendChild(_p);
+                                }
+                            })
+
+                        }
+                        else if (prop == 'id') {
+                            let _h2 = document.createElement('h2');
+                            _h2.innerHTML = champions[i][prop];
+                            _col.appendChild(_h2);
+                        }
                     }
+                    _row.appendChild(_col);
                 }
             }
-            xhr.open('GET', "https://raw.githubusercontent.com/Constant1118/htmlhomework/master/lol.json");
-            xhr.send();
-        }
+        });
 
-        function addrow() {
-            let _row = document.getElementById('row')
-            for (let i = 0; i < champions.length; i++) {
-                let _col = document.createElement('div');
-                _col.classList.add('col-12');
-                _col.classList.add('col-md-3');
-                for (let prop in champions[i]) {
-                    if (prop == 'pic') {
-                        var _img = document.createElement('img');
-                        _img.src = (`lol_pic/${champions[i][prop]}`);
-                        _col.appendChild(_img);
-                    }
-                    else if(prop == 'name') {
-                        var _h2 = document.createElement('h2');
-                        _h2.innerHTML = champions[i][prop];
-                        _col.appendChild(_h2);
-                    }
-                    else{
-                        var _p = document.createElement('p');
-                        _p.innerHTML = champions[i][prop];
-                        _col.appendChild(_p);
-                    }
-                }
-                _row.appendChild(_col);
-            }
-        }
+        // function createcard(){
+        //     alert('123');
+        // }
 
     </script>
 
