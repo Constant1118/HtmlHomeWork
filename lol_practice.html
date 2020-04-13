@@ -11,8 +11,36 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/lol.css">
     <title>lol web practice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #cccccc;
+            text-align: center;
+        }
+
+        p {
+            text-align: start;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        .col-4 {
+            background-color: #000000;
+            padding: 20px 0;
+        }
+
+        img:hover {
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
@@ -69,9 +97,9 @@
                             _img.addEventListener('click', () => {
                                 $('#exampleModal').modal('toggle');
                                 modle_title.textContent = champions[i].name;
-                                for(item in champions[i].stats){
+                                for (item in champions[i].stats) {
                                     let _p = document.createElement('p');
-                                    _p.innerHTML=(`${item}:${champions[i].stats[item]}`);
+                                    _p.innerHTML = (`${item}:${champions[i].stats[item]}`);
                                     modle_body.appendChild(_p);
                                 }
                             })
