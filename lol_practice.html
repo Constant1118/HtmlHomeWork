@@ -92,10 +92,11 @@
                     for (let prop in champions[i]) {
                         if (prop == 'icon') {
                             var _img = document.createElement('img');
-                            _img.src = (champions[i][prop]);
+                            _img.src = (champions[i]['icon']);
                             _col.appendChild(_img);
                             _img.addEventListener('click', () => {
                                 $('#exampleModal').modal('toggle');
+                                modle_body.textContent='';
                                 modle_title.textContent = champions[i].name;
                                 for (item in champions[i].stats) {
                                     let _p = document.createElement('p');
@@ -103,12 +104,6 @@
                                     modle_body.appendChild(_p);
                                 }
                             })
-
-                        }
-                        else if (prop == 'id') {
-                            let _h2 = document.createElement('h2');
-                            _h2.innerHTML = champions[i][prop];
-                            _col.appendChild(_h2);
                         }
                     }
                     _row.appendChild(_col);
