@@ -1,0 +1,40 @@
+#puzzle_box {
+  width: 480px;
+  height: 480px;
+  padding: 0px;
+}
+
+.PicCell {
+  width: 94.01px;
+  height: 94.01px;
+  border-top: solid 1px white;
+  border-left: solid 1px white;
+  border-right: solid 1px gray;
+  border-bottom: solid 1px gray;
+  float: left;
+  overflow: hidden;
+}
+
+.col-12 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.msg {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  color: red;
+}
+
+.ans_pic {
+  display: none;
+  margin-bottom: 100px;
+}
+/*# sourceMappingURL=n-puzzle.css.map */
