@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寶可夢圖鑑網頁練習</title>
+    <script src="modules/helpers.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body{
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <h1>寶可夢圖鑑</h1>
+    <div id="btn">
+        <button id="addone" onclick="AddPokemon()">Click +1</button>
+        <button id="removeone" onclick="removePokemon()">Click -1</button>
+        <button id="loadall" onclick="allPokemon()">Show all</button>
+        <button id="Clearall" onclick="clearPokemon()">Clear all</button>
+    </div>
+    <div id="main_div"></div>
+    
+    <script>
+        var $main_div = $('#main_div');
+
+        var index = 1;
+        function AddPokemon() {
+            var $img = $('<img>');
+            let n = index.toString().padStart(3, '0');
+            let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${n}.png`;
+            let pokemonImg = `<img src = '${pathFile}'/>`;
+            main_div.innerHTML += pokemonImg;
+            index += 1;
+        }
+        function removePokemon() {
+            var len = main_div.childNodes.length;
+
+            if (len > 0) {
+
+                main_div.removeChild(main_div.childNodes[len - 1]);
+                index > 0 ? index-- : index;
+            }
+        }
+        function allPokemon() {
+            for (let i = 1; i < 890; i++) {
+                let fileName = i.toString().padStart(3, '0');
+                var img = $('<img>');
+                img.attr('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`);
+
+                $('#main_div').append(img);
+            }
+        }
+        function clearPokemon() {
+            $('#main_div').html(null);
+            index = 1;
+        }
+
+    </script>
+
+
+</body>
+
+</html>
