@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+table thead th {
+    background-color: #f2ffc4;
+}
+
+thead tr th {
+    font-family: DFKai-sb;
+}
+
+thead tr th:nth-child(1) {
+    background-color: #c9ff66;
+}
+
+thead tr th:nth-child(7) { 
+    background-color: #c9ff66;
+}
+.btn-light{
+    background-color: #aff;
+}
+td:hover{
+    background-color: #ccc;
+    cursor: pointer;
+}
+.btn{
+    border: 1px solid #000;
+}
